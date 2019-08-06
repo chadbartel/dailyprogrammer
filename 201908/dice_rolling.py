@@ -1,28 +1,45 @@
 from random import randint
 
 
-def diceRolls(diceNum, dieSize):
-    # Create list of dice rolls.
-    rollList = []
+def dice_rolls(dice_num: int = 1, die_size: int = 6):
+    """
+    Roll a die for a given number of times only once.
+    :param dice_num: number of dice to roll
+    :param die_size: number of faces on the die
+    :return: rolls: list of dice rolls
+    """
+
+    # Check if die_size is in expected range.
+    if die_size not in {4, 6, 10, 12, 20, 100}:
+        raise ValueError
+
     # Roll one die for each diceNum of size diceSize.
-    for n in range(diceNum):
+    rolls = []
+    for n in range(dice_num):
         # Append each roll to rollList.
-        rollList.append(randint(1, dieSize))
-    return rollList
+        rolls.append(randint(1, die_size))
+    return rolls
 
 
-def diceRollSuite(diceNum, dieSize, rollNum = 1):
-    # Create dictionary of values, in case rollNum > 1.
+def dice_roll_suite(dice_num: int = 1, die_size: int = 6,
+                    number_of_rolls: int = 1):
+    """
+    Roll a die for a given number of times at least once.
+    :param dice_num: number of dice to roll
+    :param die_size: number of faces on the die
+    :param number_of_rolls: number of times to roll dice
+    :return: rolls: dictionary of list of dice rolls
+    """
+
+    # Check if die_size is in expected range.
+    if die_size not in {4, 6, 10, 12, 20, 100}:
+        raise ValueError
+
+    # Create dictionary of each set of rolls.
     rolls = {}
-    # If rollNum value doesn't change.
-    if rollNum == 1:
-        # Roll x dice 1 time.
-        return diceNum * randint(1, dieSize)
-    # If rollNum value changes.
-    else:
-        # Since rollNum > 1, iterate through each roll.
-        for r in range(rollNum):
-            # Store each roll in our rolls dictionary.
-            rolls[r+1] = diceRolls(diceNum, dieSize)
-        # Return a dictionary of multiple rolls.
-        return rolls
+    # Iterate over each roll.
+    for roll in range(number_of_rolls):
+        # Store each roll in our rolls dictionary.
+        rolls[roll+1] = dice_rolls(dice_num, die_size)
+    # Return dictionary of each set of rolls.
+    return rolls
