@@ -8,7 +8,6 @@ Input: a file name, followed by a line of text containing a part of a shell
     stdin instead of taking a filename.
 Output: for every line of text in the file (or stdin), execute the shell command
     composed of the text given as argument and the line of text.
-
 Example:
     Contents of input.txt:
         hello.txt
@@ -27,8 +26,10 @@ Example:
         $ foreach.exe input.txt cp C:\file.txt
         Will copy the file above to the files "hello.txt", "world.txt",
         "dictionary.txt"
+Challenge by: u/adrian17
 
-Challenge by: /u/adrian17
+Author: Chad Bartel
+Date: 8/6/2019
 """
 
 import os
