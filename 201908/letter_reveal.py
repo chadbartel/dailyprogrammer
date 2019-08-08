@@ -19,6 +19,7 @@ Challenge by: u/Blocks_
 
 Author: Chad Bartel
 Date:   8/6/2019
+Edited: 8/7/2019
 """
 
 from random import randint
